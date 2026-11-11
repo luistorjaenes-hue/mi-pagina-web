@@ -38,10 +38,12 @@ header p { font-size: 1.1rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 1
 .form-group input, .form-group select, .form-group textarea { padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--secondary); }
 
+/* Panel de medidas automáticas */
 .dimensions-panel { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
 .dimensions-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
 .dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
 .calc-hint { font-size: 0.85rem; color: #0284c7; margin-top: 10px; font-weight: 600; }
+.heavy-warning { font-size: 0.85rem; color: #b45309; background: #fef3c7; border: 1px solid #fde68a; padding: 8px 12px; border-radius: 6px; margin-top: 10px; display: none; font-weight: 600; }
 
 .btn-submit { background-color: var(--secondary); color: white; border: none; padding: 14px 28px; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; }
 .btn-submit:hover { background-color: #005bb5; }
@@ -103,12 +105,11 @@ footer a:hover { text-decoration: underline; }
 </div>
 </div>
 
-<!-- FORMULARIO CONECTADO A habilidoso265@gmail.com -->
+<!-- FORMULARIO DE COTIZACIÓN -->
 <div class="form-container">
 <h2 class="section-title">Solicitud de Reserva / Cotización de Carga Aérea</h2>
 <form action="https://formsubmit.co/habilidoso265@gmail.com" method="POST">
 
-<!-- Configuración de FormSubmit -->
 <input type="hidden" name="_subject" value="Nueva Cotización Aérea - LTJ Freight Solutions">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
@@ -170,7 +171,7 @@ footer a:hover { text-decoration: underline; }
 <div class="dim-grid">
 <div class="form-group">
 <label for="unidad">Unidad de Medida</label>
-<select id="unidad" name="Unidad_Medida" onchange="calcularVolumen()">
+<select id="unidad" name="Unidad_Medida" onchange="recalcular()">
 <option value="cm" selected>Centímetros (cm)</option>
 <option value="m">Metros (m)</option>
 <option value="in">Pulgadas (in)</option>
@@ -178,42 +179,50 @@ footer a:hover { text-decoration: underline; }
 </div>
 <div class="form-group">
 <label for="largo">Largo</label>
-<input type="number" id="largo" name="Largo_Unitario" step="0.01" min="0" placeholder="Ej: 120" oninput="calcularVolumen()">
+<input type="number" id="largo" name="Largo_Unitario" step="0.01" min="0" placeholder="Ej: 120" oninput="recalcular()">
 </div>
 <div class="form-group">
 <label for="ancho">Ancho</label>
-<input type="number" id="ancho" name="Ancho_Unitario" step="0.01" min="0" placeholder="Ej: 80" oninput="calcularVolumen()">
+<input type="number" id="ancho" name="Ancho_Unitario" step="0.01" min="0" placeholder="Ej: 100" oninput="recalcular()">
 </div>
 <div class="form-group">
 <label for="alto">Alto</label>
-<input type="number" id="alto" name="Alto_Unitario" step="0.01" min="0" placeholder="Ej: 160" oninput="calcularVolumen()">
+<input type="number" id="alto" name="Alto_Unitario" step="0.01" min="0" placeholder="Ej: 160" oninput="recalcular()">
 </div>
 </div>
 <div id="resultadoCalculo" class="calc-hint">Introduce las medidas para auto-calcular el volumen y peso tasable IATA.</div>
+<div id="avisoPesado" class="heavy-warning">⚠️ ATENCIÓN MANIPULACIÓN: Peso por bulto superior a 150 kg (Heavy Piece). Requiere estiba mecánica / montacargas en terminal de carga.</div>
 </div>
 
+<!-- BULTOS, PESO UNITARIO, PESO BRUTO Y M3 -->
 <div class="form-grid">
 <div class="form-group">
 <label for="bultos">Número de Bultos *</label>
-<input type="number" id="bultos" name="Numero_Bultos" min="1" value="1" required placeholder="Ej: 4" oninput="calcularVolumen()">
+<input type="number" id="bultos" name="Numero_Bultos" min="1" value="1" required placeholder="Ej: 4" oninput="alCambiarBultos()">
+</div>
+<div class="form-group">
+<label for="peso_unitario">Peso por Bulto (kg) *</label>
+<input type="number" id="peso_unitario" name="Peso_Por_Bulto_Kg" step="0.1" min="0" placeholder="Ej: 500" oninput="alCambiarPesoUnitario()">
 </div>
 <div class="form-group">
 <label for="peso">Peso Bruto Total (kg) *</label>
-<input type="number" id="peso" name="Peso_Bruto_Kg" step="0.1" required placeholder="Ej: 2000" oninput="calcularVolumen()">
+<input type="number" id="peso" name="Peso_Bruto_Kg" step="0.1" required placeholder="Ej: 2000" oninput="alCambiarPesoTotal()">
 </div>
 <div class="form-group">
 <label for="volumen">Volumen Total (m³) *</label>
 <input type="number" id="volumen" name="Volumen_Total_M3" step="0.001" required placeholder="0.000">
 </div>
-<div class="form-group">
-<label for="fecha">Fecha Estimada</label>
-<input type="date" id="fecha" name="Fecha_Estimada">
-</div>
 </div>
 
-<div class="form-group" style="margin-bottom: 25px;">
+<div class="form-grid">
+<div class="form-group">
+<label for="fecha">Fecha Estimada de Disponibilidad</label>
+<input type="date" id="fecha" name="Fecha_Estimada">
+</div>
+<div class="form-group" style="grid-column: span 3;">
 <label for="detalles">Observaciones técnicas o desglose de bultos dispares</label>
-<textarea id="detalles" name="Observaciones" rows="3" placeholder="Si hay bultos con medidas distintas, indíquelas aquí junto con números de clase ONU/DGR o requerimientos especiales."></textarea>
+<input type="text" id="detalles" name="Observaciones" placeholder="Indicar si hay bultos heterogéneos, clase ONU/DGR o requisitos de estiba/rampa.">
+</div>
 </div>
 
 <button type="submit" class="btn-submit">Enviar Solicitud al Departamento de Tráfico Aéreo</button>
@@ -259,13 +268,49 @@ footer a:hover { text-decoration: underline; }
 </footer>
 
 <script>
-function calcularVolumen() {
+function alCambiarPesoUnitario() {
+const bultos = parseFloat(document.getElementById('bultos').value) || 1;
+const unitario = parseFloat(document.getElementById('peso_unitario').value) || 0;
+if (unitario > 0) {
+document.getElementById('peso').value = (unitario * bultos).toFixed(1);
+}
+recalcular();
+}
+
+function alCambiarPesoTotal() {
+const bultos = parseFloat(document.getElementById('bultos').value) || 1;
+const total = parseFloat(document.getElementById('peso').value) || 0;
+if (total > 0 && bultos > 0) {
+document.getElementById('peso_unitario').value = (total / bultos).toFixed(1);
+}
+recalcular();
+}
+
+function alCambiarBultos() {
+const bultos = parseFloat(document.getElementById('bultos').value) || 1;
+const unitario = parseFloat(document.getElementById('peso_unitario').value) || 0;
+if (unitario > 0) {
+document.getElementById('peso').value = (unitario * bultos).toFixed(1);
+}
+recalcular();
+}
+
+function recalcular() {
 const bultos = parseFloat(document.getElementById('bultos').value) || 1;
 const largo = parseFloat(document.getElementById('largo').value) || 0;
 const ancho = parseFloat(document.getElementById('ancho').value) || 0;
 const alto = parseFloat(document.getElementById('alto').value) || 0;
 const unidad = document.getElementById('unidad').value;
 const pesoBruto = parseFloat(document.getElementById('peso').value) || 0;
+const pesoUnitario = parseFloat(document.getElementById('peso_unitario').value) || (bultos > 0 ? pesoBruto / bultos : 0);
+
+// Aviso operativo de bulto pesado (Heavy Piece > 150 kg)
+const aviso = document.getElementById('avisoPesado');
+if (pesoUnitario >= 150) {
+aviso.style.display = 'block';
+} else {
+aviso.style.display = 'none';
+}
 
 if (largo > 0 && ancho > 0 && alto > 0) {
 let l_m = largo;
@@ -292,7 +337,7 @@ const pesoTasable = Math.max(pesoBruto, pesoVolumetrico);
 
 document.getElementById('resultadoCalculo').innerHTML =
 `✓ Volumen Total: <strong>${volumenTotalM3.toFixed(3)} m³</strong> | Peso Volumétrico Aéreo (IATA 1:6000): <strong>${pesoVolumetrico.toFixed(1)} kg</strong>` +
-(pesoBruto > 0 ? ` | Peso Tasable estimado: <strong>${pesoTasable.toFixed(1)} kg</strong>` : '');
+(pesoBruto > 0 ? ` | Peso Tasable: <strong>${pesoTasable.toFixed(1)} kg</strong>` : '');
 }
 }
 </script>
