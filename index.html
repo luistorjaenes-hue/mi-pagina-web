@@ -24,12 +24,11 @@ header p { font-size: 1.1rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 1
 .badge { background: rgba(255, 255, 255, 0.15); border: 1px solid rgba(255, 255, 255, 0.3); padding: 5px 12px; border-radius: 20px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px; }
 
 .container { max-width: 1050px; margin: 40px auto; padding: 0 20px; }
-
-.section-title { font-size: 1.6rem; color: var(--primary); margin-bottom: 25px; border-bottom: 2px solid var(--border); padding-bottom: 10px; display: flex; align-items: center; justify-content: space-between; }
+.section-title { font-size: 1.6rem; color: var(--primary); margin-bottom: 25px; border-bottom: 2px solid var(--border); padding-bottom: 10px; }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 45px; }
 .card { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 25px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); }
-.card h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
+.card h3 { color: var(--primary); font-size: 1.25rem; margin-bottom: 10px; }
 .card p { font-size: 0.95rem; color: var(--gray); }
 
 .form-container { background: white; border: 1px solid var(--border); border-radius: 8px; padding: 35px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05); margin-bottom: 45px; }
@@ -37,7 +36,13 @@ header p { font-size: 1.1rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 1
 .form-group { display: flex; flex-direction: column; }
 .form-group label { font-size: 0.85rem; font-weight: 600; margin-bottom: 6px; color: var(--dark); }
 .form-group input, .form-group select, .form-group textarea { padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; }
-.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--secondary); ring: 2px solid rgba(0, 112, 243, 0.2); }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--secondary); }
+
+.dimensions-panel { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
+.dimensions-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
+.dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
+.calc-hint { font-size: 0.85rem; color: #0284c7; margin-top: 10px; font-weight: 600; }
+
 .btn-submit { background-color: var(--secondary); color: white; border: none; padding: 14px 28px; border-radius: 6px; font-size: 1rem; font-weight: 600; cursor: pointer; transition: background 0.2s; width: 100%; }
 .btn-submit:hover { background-color: #005bb5; }
 
@@ -65,118 +70,150 @@ footer a:hover { text-decoration: underline; }
 
 <div class="container">
 
-<!-- SECCIÓN DE SERVICIOS OPERATIVOS -->
 <h2 class="section-title">Especialidades de Tráfico Aéreo</h2>
 <div class="grid">
 <div class="card">
 <h3>Carga General Consolidada & Directa</h3>
-<p>Emisión y gestión directa de conocimientos aéreos (MAWB/HAWB) en vuelos regulares con las principales aerolíneas mundiales, garantizando reserva prioritaria y tránsitos optimizados.</p>
+<p>Emisión y gestión directa de conocimientos aéreos (MAWB/HAWB) en vuelos regulares con aerolíneas mundiales líderes, optimizando tránsitos y costes.</p>
 </div>
 
 <div class="card">
 <h3>Mercancías Peligrosas (DGR / OACI)</h3>
-<p>Equipo técnico con titulación reglamentaria para verificación de embalajes homologados ONU, etiquetado normativo y emisión de la Declaración del Expedidor (Shipper's Declaration for Dangerous Goods).</p>
+<p>Equipo homologado para verificación de embalajes ONU, etiquetado normativo y emisión de Declaraciones Shipper's Declaration conforme al manual IATA DGR.</p>
 </div>
 
 <div class="card">
 <h3>Perecederos & Cadena de Frío</h3>
-<p>Procedimientos estrictos de temperatura controlada (15°C a 25°C, 2°C a 8°C o hielo seco) para productos hortofrutícolas, farmacéuticos y biológicos, con despacho fitosanitario/sanitario prioritario.</p>
+<p>Soluciones para productos farmacéuticos y perecederos con temperatura monitorizada (15°C-25°C, 2°C-8°C o hielo seco) y despacho fitosanitario urgente.</p>
 </div>
 
 <div class="card">
 <h3>Operaciones Chárter & Urgent Cargo</h3>
-<p>Fletamento completo o parcial (Part-Charter) de aeronaves cargueras dedicadas para expediciones críticas (AOG, automoción, maquinaria industrial pesada) con disponibilidad operativa 24/7/365.</p>
+<p>Fletamento total o parcial (Part-Charter) para cargas críticas y proyectos industriales con soporte operativo ininterrumpido 24/7/365.</p>
 </div>
 
 <div class="card">
 <h3>Servicios Puerta a Puerta (D2D)</h3>
-<p>Coordinación integral de recogidas en fábrica, posicionamiento en pista, despacho aduanero de exportación/importación y entrega final bajo términos Incoterms (DAP, DDP, CPT).</p>
+<p>Coordinación integral de recogidas en fábrica, flete aéreo, despacho aduanero y entrega final bajo cualquier Incoterm (DAP, DDP, CIP).</p>
 </div>
 
 <div class="card">
 <h3>Instalaciones Logísticas y ADT</h3>
-<p>Almacenes e infraestructura de tránsito adyacentes al Centro de Carga Aérea del Aeropuerto de Manises (VLC), equipados para consolidación, paletizado aeroportuario y depósito aduanero temporal.</p>
+<p>Almacenes adyacentes al Centro de Carga Aérea de Manises (VLC), equipados para verificación, paletizado aeroportuario y depósito aduanero temporal.</p>
 </div>
 </div>
 
-<!-- COTIZADOR Y SOLICITUD DE EXPEDICIÓN -->
+<!-- FORMULARIO CONECTADO A habilidoso265@gmail.com -->
 <div class="form-container">
 <h2 class="section-title">Solicitud de Reserva / Cotización de Carga Aérea</h2>
-<form action="#" method="post" onsubmit="event.preventDefault(); alert('Solicitud de cotización registrada correctamente. El departamento de tráfico aéreo se pondrá en contacto para tramitar la reserva.');">
+<form action="https://formsubmit.co/habilidoso265@gmail.com" method="POST">
+
+<!-- Configuración de FormSubmit -->
+<input type="hidden" name="_subject" value="Nueva Cotización Aérea - LTJ Freight Solutions">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_captcha" value="false">
 
 <div class="form-grid">
 <div class="form-group">
 <label for="empresa">Empresa / Razón Social *</label>
-<input type="text" id="empresa" required placeholder="Nombre de la empresa o cargador">
+<input type="text" id="empresa" name="Empresa" required placeholder="Nombre de la empresa">
 </div>
 <div class="form-group">
 <label for="contacto">Persona de Contacto *</label>
-<input type="text" id="contacto" required placeholder="Nombre y apellidos">
+<input type="text" id="contacto" name="Contacto" required placeholder="Nombre y apellidos">
 </div>
 <div class="form-group">
 <label for="email">Correo Electrónico Corporativo *</label>
-<input type="email" id="email" required placeholder="trafico@suempresa.com">
+<input type="email" id="email" name="Email_Cliente" required placeholder="trafico@empresa.com">
 </div>
 <div class="form-group">
 <label for="telefono">Teléfono Directo *</label>
-<input type="tel" id="telefono" required placeholder="+34 96X XX XX XX">
+<input type="tel" id="telefono" name="Telefono" required placeholder="+34 96X XX XX XX">
 </div>
 </div>
 
 <div class="form-grid">
 <div class="form-group">
 <label for="origen">Aeropuerto Origen / Recogida *</label>
-<input type="text" id="origen" required placeholder="Ej: Manises VLC / Madrid MAD">
+<input type="text" id="origen" name="Origen" required placeholder="Ej: Manises VLC / Madrid MAD">
 </div>
 <div class="form-group">
 <label for="destino">Aeropuerto Destino / Entrega *</label>
-<input type="text" id="destino" required placeholder="Ej: JFK New York / MIA Miami">
+<input type="text" id="destino" name="Destino" required placeholder="Ej: JFK New York / MIA Miami">
 </div>
 <div class="form-group">
 <label for="tipo_mercancia">Naturaleza de la Mercancía *</label>
-<select id="tipo_mercancia" required>
+<select id="tipo_mercancia" name="Tipo_Mercancia" required>
 <option value="">Seleccione tipología...</option>
-<option value="general">Carga General (Industrial / Comercial)</option>
-<option value="dgr">Mercancía Peligrosa (DGR IATA / ONU)</option>
-<option value="perishable">Perecedero / Pharma (Temperatura Controlada)</option>
-<option value="valuable">Carga Valiosa (VAL) / Vulnerable (VUN)</option>
-<option value="charter">Solicitud Vuelo Chárter Urgente</option>
+<option value="Carga General">Carga General (Industrial / Comercial)</option>
+<option value="DGR Peligrosa">Mercancía Peligrosa (DGR IATA / ONU)</option>
+<option value="Perecedero / Pharma">Perecedero / Pharma (Temperatura Controlada)</option>
+<option value="Carga Valiosa (VAL)">Carga Valiosa (VAL) / Vulnerable (VUN)</option>
+<option value="Charter Urgente">Solicitud Vuelo Chárter Urgente</option>
 </select>
 </div>
 <div class="form-group">
 <label for="incoterm">Término de Entrega (Incoterm)</label>
-<select id="incoterm">
-<option value="FOB">FCA / FOB (Puesto en aeropuerto origen)</option>
-<option value="CPT">CPT / CFR (Transporte aéreo principal pagado)</option>
-<option value="CIP">CIP / CIF (Transporte aéreo y seguro cubierto)</option>
-<option value="DAP">DAP (Puesto en destino sin despacho importación)</option>
-<option value="DDP">DDP (Puerta a puerta con derechos e impuestos)</option>
+<select id="incoterm" name="Incoterm">
+<option value="FCA/FOB">FCA / FOB (Puesto en aeropuerto)</option>
+<option value="CPT/CFR">CPT / CFR (Transporte aéreo pagado)</option>
+<option value="CIP/CIF">CIP / CIF (Transporte y seguro)</option>
+<option value="DAP">DAP (Puesto en destino sin despachar)</option>
+<option value="DDP">DDP (Puerta a puerta con derechos)</option>
 </select>
 </div>
+</div>
+
+<!-- MÓDULO INTELIGENTE DE MEDIDAS -->
+<div class="dimensions-panel">
+<div class="dimensions-title">Dimensiones Unitarias del Bulto & Unidad de Medida</div>
+<div class="dim-grid">
+<div class="form-group">
+<label for="unidad">Unidad de Medida</label>
+<select id="unidad" name="Unidad_Medida" onchange="calcularVolumen()">
+<option value="cm" selected>Centímetros (cm)</option>
+<option value="m">Metros (m)</option>
+<option value="in">Pulgadas (in)</option>
+</select>
+</div>
+<div class="form-group">
+<label for="largo">Largo</label>
+<input type="number" id="largo" name="Largo_Unitario" step="0.01" min="0" placeholder="Ej: 120" oninput="calcularVolumen()">
+</div>
+<div class="form-group">
+<label for="ancho">Ancho</label>
+<input type="number" id="ancho" name="Ancho_Unitario" step="0.01" min="0" placeholder="Ej: 80" oninput="calcularVolumen()">
+</div>
+<div class="form-group">
+<label for="alto">Alto</label>
+<input type="number" id="alto" name="Alto_Unitario" step="0.01" min="0" placeholder="Ej: 160" oninput="calcularVolumen()">
+</div>
+</div>
+<div id="resultadoCalculo" class="calc-hint">Introduce las medidas para auto-calcular el volumen y peso tasable IATA.</div>
 </div>
 
 <div class="form-grid">
 <div class="form-group">
 <label for="bultos">Número de Bultos *</label>
-<input type="number" id="bultos" min="1" required placeholder="Ej: 4 pallets / 12 cajas">
+<input type="number" id="bultos" name="Numero_Bultos" min="1" value="1" required placeholder="Ej: 4" oninput="calcularVolumen()">
 </div>
 <div class="form-group">
 <label for="peso">Peso Bruto Total (kg) *</label>
-<input type="number" id="peso" step="0.1" required placeholder="Ej: 1450">
+<input type="number" id="peso" name="Peso_Bruto_Kg" step="0.1" required placeholder="Ej: 2000" oninput="calcularVolumen()">
 </div>
 <div class="form-group">
 <label for="volumen">Volumen Total (m³) *</label>
-<input type="number" id="volumen" step="0.01" required placeholder="Ej: 8.60">
+<input type="number" id="volumen" name="Volumen_Total_M3" step="0.001" required placeholder="0.000">
 </div>
 <div class="form-group">
-<label for="fecha">Fecha Estimada de Disponibilidad</label>
-<input type="date" id="fecha">
+<label for="fecha">Fecha Estimada</label>
+<input type="date" id="fecha" name="Fecha_Estimada">
 </div>
 </div>
 
 <div class="form-group" style="margin-bottom: 25px;">
-<label for="detalles">Dimensiones unitarias (L x A x H cm) y observaciones técnicas</label>
-<textarea id="detalles" rows="3" placeholder="Indicar dimensiones por bulto para verificación de peso volumétrico (IATA 1:6000), número de clase DGR/UN si aplica, o rangos térmicos requeridos."></textarea>
+<label for="detalles">Observaciones técnicas o desglose de bultos dispares</label>
+<textarea id="detalles" name="Observaciones" rows="3" placeholder="Si hay bultos con medidas distintas, indíquelas aquí junto con números de clase ONU/DGR o requerimientos especiales."></textarea>
 </div>
 
 <button type="submit" class="btn-submit">Enviar Solicitud al Departamento de Tráfico Aéreo</button>
@@ -204,9 +241,9 @@ footer a:hover { text-decoration: underline; }
 <div class="info-box">
 <h4>Contacto & Red de Tráfico</h4>
 <p><strong>Teléfono Directo:</strong> +34 961 36 00 00</p>
-<p><strong>AOG / Tráfico 24h:</strong> ops@ltj-freight.com</p>
+<p><strong>Recepción Cotizaciones:</strong> habilidoso265@gmail.com</p>
 <p><strong>Despacho Aduanero:</strong> customs@ltj-freight.com</p>
-<p><strong>Redes:</strong> LinkedIn Corporativo | Red de Agentes WCA</p>
+<p><strong>Redes:</strong> LinkedIn Corporativo | Red WCA</p>
 </div>
 </div>
 
@@ -220,6 +257,45 @@ footer a:hover { text-decoration: underline; }
 <a href="#">Política de Privacidad</a>
 </p>
 </footer>
+
+<script>
+function calcularVolumen() {
+const bultos = parseFloat(document.getElementById('bultos').value) || 1;
+const largo = parseFloat(document.getElementById('largo').value) || 0;
+const ancho = parseFloat(document.getElementById('ancho').value) || 0;
+const alto = parseFloat(document.getElementById('alto').value) || 0;
+const unidad = document.getElementById('unidad').value;
+const pesoBruto = parseFloat(document.getElementById('peso').value) || 0;
+
+if (largo > 0 && ancho > 0 && alto > 0) {
+let l_m = largo;
+let a_m = ancho;
+let h_m = alto;
+
+if (unidad === 'cm') {
+l_m = largo / 100;
+a_m = ancho / 100;
+h_m = alto / 100;
+} else if (unidad === 'in') {
+l_m = largo * 0.0254;
+a_m = ancho * 0.0254;
+h_m = alto * 0.0254;
+}
+
+const volumenUnitarioM3 = l_m * a_m * h_m;
+const volumenTotalM3 = volumenUnitarioM3 * bultos;
+
+document.getElementById('volumen').value = volumenTotalM3.toFixed(3);
+
+const pesoVolumetrico = volumenTotalM3 * 166.67;
+const pesoTasable = Math.max(pesoBruto, pesoVolumetrico);
+
+document.getElementById('resultadoCalculo').innerHTML =
+`✓ Volumen Total: <strong>${volumenTotalM3.toFixed(3)} m³</strong> | Peso Volumétrico Aéreo (IATA 1:6000): <strong>${pesoVolumetrico.toFixed(1)} kg</strong>` +
+(pesoBruto > 0 ? ` | Peso Tasable estimado: <strong>${pesoTasable.toFixed(1)} kg</strong>` : '');
+}
+}
+</script>
 
 </body>
 </html>
