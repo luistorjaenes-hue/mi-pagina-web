@@ -38,7 +38,6 @@ header p { font-size: 1.1rem; color: #cbd5e1; max-width: 700px; margin: 0 auto 1
 .form-group input, .form-group select, .form-group textarea { padding: 10px 12px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; font-family: inherit; }
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus { outline: none; border-color: var(--secondary); }
 
-/* Panel de medidas automáticas */
 .dimensions-panel { background: #f8fafc; border: 1px dashed #cbd5e1; border-radius: 8px; padding: 20px; margin-bottom: 20px; }
 .dimensions-title { font-size: 0.95rem; font-weight: 700; color: var(--primary); margin-bottom: 12px; }
 .dim-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; }
@@ -304,7 +303,6 @@ const unidad = document.getElementById('unidad').value;
 const pesoBruto = parseFloat(document.getElementById('peso').value) || 0;
 const pesoUnitario = parseFloat(document.getElementById('peso_unitario').value) || (bultos > 0 ? pesoBruto / bultos : 0);
 
-// Aviso operativo de bulto pesado (Heavy Piece > 150 kg)
 const aviso = document.getElementById('avisoPesado');
 if (pesoUnitario >= 150) {
 aviso.style.display = 'block';
